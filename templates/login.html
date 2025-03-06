@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-menu-color="dark" data-topbar-color="light" data-sidebar-view="default">
+
+<head>
+    <meta charset="utf-8">
+    <title>OTF - Профиль</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
+    <meta content="MyraStudio" name="author">
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{MEDIA_URL}}/images/logo.png">
+
+    <!-- Icons css -->
+    <link href="{% static 'css/icons.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+
+    <!-- Google Font Family (Mandatory in All Pages)-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
+    <!-- App css -->
+    <link href="{% static '/css/app.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Head Js -->
+    <script src="{% static '/js/head.js' %}"></script>
+</head>
+
+<body class="bg-primary h-screen w-screen flex justify-center items-center">
+    <div class="2xl:w-1/4 lg:w-1/3 md:w-1/2 w-full">
+        <div class="card overflow-hidden sm:rounded-md rounded-none">
+            <div class="px-6 py-8">
+                <div class="w-1/2 mx-auto block my-8">
+                    <img src="{% static '/images/logo_wide.png' %}">
+                </div>
+
+                <h3 class="text-dark mb-4 mt-6 text-center text-3xl">Авторизация</h3>
+
+                        <div class="p-6">
+                            <div class="grid lg:grid-cols-1 gap-6">
+                                <form method="post">
+                                    {%csrf_token%}
+                                <div>
+                                    <label
+                                        class="text-gray-800 text-sm font-medium inline-block mb-2">Логин</label>
+                                    {{form.username}}
+                                    {{form.username.errors}}
+                                </div>
+
+                                <div>
+                                    <label
+                                        class="text-gray-800 text-sm font-medium inline-block mb-2">Пароль</label>
+                                    {{form.password}}
+                                </div>
+                                    {%if form.errors%}
+                                          <div class="alert alert-danger" role="alert">
+                                                Логин или пароль введены неверно
+                                          </div>
+                                    {% endif %}
+								<div class="flex justify-center">
+									<button type="submit" class="btn w-full text-white bg-primary"> Войти </button>
+								</div>
+                            </form>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

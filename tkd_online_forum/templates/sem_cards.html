@@ -1,0 +1,84 @@
+{%extends 'base.html'%}
+{%block content%}
+                {% if not request.user.admin %}
+                        <div class="p-5 ">
+                            <div class="flex flex-wrap items-center gap-3">
+                        <a type="button"
+                                        class="btn bg-info/25 text-info hover:bg-info hover:text-white"
+                        href="{%url 'seminars_user_create'%}">
+                            Заявка на семинар</a>
+                            </div>
+                        </div>
+                {% endif %}
+				    <div class="card overflow-hidden">
+                        <div class="card-header">
+                            <h4 class="card-title">Заявки на семинары</h4>
+                        </div>
+                        <div>
+                            <div class="overflow-x-auto">
+                                <div class="min-w-full inline-block align-middle">
+                                    <div class="overflow-hidden">
+                                        <table class="min-w-full divide-y divide-gray-200">
+                                            <thead>
+                                                <tr>
+                                                    {% if request.user.admin %}
+                                                    <th scope="col" class="px-6 py-3 text-start text-sm text-gray-500">
+                                                        ФИО</th>
+                                                    {% endif %}
+                                                    <th scope="col" class="px-6 py-3 text-start text-sm text-gray-500">
+                                                        Мероприятие
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 text-start text-sm text-gray-500">
+                                                        Ссылка на семинар
+                                                    </th>
+                                                    {% if not request.user.admin %}
+                                                    <th scope="col" class="px-6 py-3 text-start text-sm text-gray-500">
+                                                        Статус оплаты
+                                                    </th>
+                                                    {% endif %}
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for object in object_list %}
+
+                                                <tr class="odd:bg-white even:bg-gray-100 hover:bg-gray-100">
+                                                {% if request.user.admin %}
+                                                    <td
+                                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                                                        <a class="text-primary hover:text-sky-700" href="{%url 'app_card_detail' object.id%}">{{ object.fio }}</a> </td>
+                                                    {% endif %}
+                                                    <td
+                                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                                                        <a class="text-primary hover:text-sky-700" href="{%url 'app_card_detail' object.id%}">{{ object.event }}</a> </td>
+                                                    <td
+                                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                                                        {{ object.admin_comment }} </td>
+                                                {% if not request.user.admin %}
+                                                    {% if object.status %}
+                                                        <td
+                                                        class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                                         <button type="button" class="btn bg-success text-white" disabled>
+                                                            <i class="ti ti-check text-base me-4"></i>
+                                                         </button>
+                                                        </td>
+                                                    {% else %}
+                                                     <td
+                                                        class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                                        <button type="button" class="btn bg-danger text-white" disabled>
+                                                            <i class="ti ti-brand-x text-base me-4"></i>
+                                                        </button>
+                                                        </td>
+                                                    {% endif %}
+                                                    {% endif %}
+                                                </tr>
+
+                                            {% endfor %}
+                                        </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+{% endblock %}

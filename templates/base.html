@@ -1,0 +1,203 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-menu-color="dark" data-topbar-color="light" data-sidebar-view="default">
+
+<head>
+    <meta charset="utf-8">
+    <title>OTF - Профиль</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
+    <meta content="MyraStudio" name="author">
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{% static '/images/logo.png' %}">
+
+    <!-- Icons css -->
+    <link href="{% static 'css/icons.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+
+    <!-- Google Font Family (Mandatory in All Pages)-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
+    <!-- App css -->
+    <link href="{% static '/css/app.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Head Js -->
+    <script src="{% static '/js/head.js' %}"></script>
+</head>
+
+<body>
+
+    <!-- Begin page -->
+    <div class="flex wrapper">
+
+        <!-- Start Sidebar -->
+        <div id="app-menu"
+            class="hs-overlay fixed inset-y-0 start-0 z-[60] hidden w-64 -translate-x-full transform overflow-y-auto border-e border-default-200 bg-white transition-all duration-300 hs-overlay-open:translate-x-0 lg:bottom-0 lg:end-auto lg:z-30 lg:block lg:translate-x-0 rtl:translate-x-full rtl:hs-overlay-open:translate-x-0 rtl:lg:translate-x-0 print:hidden [--overlay-backdrop:true] lg:[--overlay-backdrop:false]">
+            <div class="sticky top-0 flex h-16 items-center justify-center px-6">
+                <a href="#">
+                    <img src="{% static '/images/logo_wide.png' %}" alt="logo" class="flex h-6 dark:hidden" />
+                    <img src="{% static '/images/logo_wide.png' %}" alt="logo" class="hidden h-6 dark:flex" />
+                </a>
+            </div>
+
+            <div class="hs-accordion-group h-[calc(100%-72px)] p-4 ps-0" data-simplebar>
+                <ul class="admin-menu flex w-full flex-col gap-1.5">
+                    <li class="menu-item">
+                        <a class="group flex items-center gap-x-3.5 rounded-e-full px-4 py-2 text-sm font-medium text-default-700 transition-all hover:bg-default-100"
+                            href="{%url 'events'%}">
+                            <i class="material-symbols-rounded font-light text-2xl transition-all group-hover:fill-1">home</i>
+                            Все мероприятия
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="{%url 'competitions'%}"
+                            class="group flex items-center gap-x-3.5 rounded-e-full px-4 py-2 text-sm font-medium text-default-700 transition-all hover:bg-default-100 hs-accordion-active:bg-default-100">
+                            <i
+                                class="material-symbols-rounded font-light text-2xl transition-all group-hover:fill-1">article</i>
+                            <span class="menu-text"> Соревнования </span>
+                        </a>
+                    </li>
+                    
+                    <li class="menu-item">
+                        <a href="{%url 'seminars'%}"
+                            class="group flex items-center gap-x-3.5 rounded-e-full px-4 py-2 text-sm font-medium text-default-700 transition-all hover:bg-default-100 hs-accordion-active:bg-default-100">
+                            <i
+                                class="material-symbols-rounded font-light text-2xl transition-all group-hover:fill-1">article</i>
+                            <span class="menu-text"> Семинары </span>
+                        </a>
+                    </li>
+                    <li class="hs-accordion menu-item">
+                        <a href="javascript:void(0)"
+                            class="hs-accordion-toggle group flex items-center gap-x-3.5 rounded-e-full px-4 py-2 text-sm font-medium text-default-700 transition-all hover:bg-default-100 hs-accordion-active:bg-default-100">
+                            <i
+                                class="material-symbols-rounded font-light text-2xl transition-all group-hover:fill-1">grid_view</i>
+                            <span class="menu-text"> Заявки </span>
+                            <span
+                                class="ti ti-chevron-right ms-auto text-sm transition-all hs-accordion-active:rotate-90"></span>
+                        </a>
+
+                        <div class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
+                            <ul class="mt-2 space-y-2">
+                               <li class="menu-item">
+                                    <a class="flex items-center gap-x-3.5 rounded-e-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100"
+                                        href="{%url 'app_cards'%}">
+                                        <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                                        Все заявки
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a class="flex items-center gap-x-3.5 rounded-e-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100"
+                                        href="{%url 'comp_cards'%}">
+                                        <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                                        Соревнования
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a class="flex items-center gap-x-3.5 rounded-e-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100"
+                                        href="{%url 'sem_cards'%}">
+                                        <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                                        Семинары
+                                    </a>
+                                </li>
+                       
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- End Sidebar -->
+
+        <!-- Start Page Content here -->
+        <div class="page-content">
+
+            <!-- Topbar Start -->
+            <header class="sticky top-0 bg-white h-16 flex items-center px-5 gap-4 z-50">
+                <!-- Topbar Brand Logo -->
+                <a href="#" class="md:hidden flex">
+                    <img src="{% static '/images/logo_wide.png' %}" class="h-6" alt="Small logo">
+                </a>
+
+                <!-- Sidenav Menu Toggle Button -->
+                <button id="button-toggle-menu"
+                    class="text-gray-500 hover:text-gray-600 p-2 rounded-full cursor-pointer waves-effect me-auto"
+                    data-hs-overlay="#app-menu" aria-controls="application-sidebar" aria-label="Toggle navigation">
+                    <span class="sr-only">Menu Toggle Button</span>
+                    <span class="flex items-center justify-center h-6 w-6">
+                        <i class="ti ti-menu-2 text-2xl"></i>
+                    </span>
+                </button>
+
+
+
+                <!-- Profile Dropdown Button -->
+                <div class="relative">
+                    <div class="hs-dropdown relative inline-flex [--placement:bottom-right]">
+                        <button type="button" class="hs-dropdown-toggle nav-link flex items-center gap-2">
+                            <span class="md:flex items-center hidden">
+                                <h5 class="text-base">{{ request.user.last_name }} {{request.user.first_name}} {{request.user.mid_name}}</h5>
+                                <i class="ti ti-chevron-down text-sm ms-2"></i>
+                            </span>
+                        </button>
+                        <div
+                            class="hs-dropdown-menu duration mt-2 min-w-[12rem] rounded-lg border border-default-200 bg-white p-2 opacity-0 shadow-md transition-[opacity,margin] hs-dropdown-open:opacity-100 dark:bg-default-50 hidden">
+                            <a class="flex items-center py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100" href="#">
+                                Профиль
+                            </a>
+                            <a class="flex items-center py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100" href="#">
+                                Настройки
+                            </a>
+                            <a class="flex items-center py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100" href="#">
+                                Поддержка
+                            </a>
+                            <hr class="my-2">
+                            <form method="post" action="{% url 'logout' %}">
+                                    {% csrf_token %}
+                                <button type="submit" class="flex items-center w-full py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100">Выйти</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- Topbar End -->
+
+            <main class="flex-grow p-6">
+
+                {%block content%}
+
+                {%endblock%}
+
+            </main>
+
+            <!-- Footer Start -->
+            <footer class="footer h-16 flex items-center px-6 bg-white border-t border-gray-200 shadow">
+                <div class="flex md:justify-between justify-center w-full gap-4">
+                    <div>
+                        <script>document.write(new Date().getFullYear())</script> © O!T
+                    </div>
+                </div>
+            </footer>
+            <!-- Footer End -->
+
+        </div>
+        <!-- End Page content -->
+
+    </div>
+
+    <!-- Plugin Js -->
+    <script src="{%static '/libs/simplebar/simplebar.min.js'%}"></script>
+    <script src="{% static '/libs/simplebar/jquery/jquery.min.js' %}"></script>
+    <script src="{% static '/libs/iconify-icon/iconify-icon.min.js' %}"></script>
+    <script src="{% static '/libs/node-waves/waves.min.js' %}"></script>
+    <script src="{% static '/libs/preline/preline.js' %}"></script>
+
+    <!-- App Js -->
+    <script src="{% static '/js/app.js' %}"></script>
+
+</body>
+
+</html>
