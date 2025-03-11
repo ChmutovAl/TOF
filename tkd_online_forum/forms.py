@@ -34,6 +34,9 @@ class CompetitionForm(forms.ModelForm):
         widgets = {
             'type':forms.HiddenInput(),
         }
+    def __init__(self, *args, **kwargs):
+        super(CompetitionForm, self).__init__(*args, **kwargs)
+        self.fields['type'].required = False
 
 
 class SeminarForm(forms.ModelForm):
@@ -55,6 +58,10 @@ class SeminarForm(forms.ModelForm):
             'type':forms.HiddenInput(),
         }
 
+    def __init__(self, *args, **kwargs):
+        super(SeminarForm, self).__init__(*args, **kwargs)
+        self.fields['type'].required = False
+
 
 class CompFormOrg(forms.ModelForm):
     fio = forms.CharField(label='ФИО спортсмена', widget=forms.TextInput(attrs={'class':'form-input mb-6'}))
@@ -71,6 +78,10 @@ class CompFormOrg(forms.ModelForm):
         widgets = {
             'user': forms.HiddenInput(),
         }
+
+    def __init__(self, *args, **kwargs):
+        super(CompFormOrg, self).__init__(*args, **kwargs)
+        self.fields['user'].required = False
 
 
 class CompFormUser(forms.ModelForm):
@@ -91,6 +102,11 @@ class CompFormUser(forms.ModelForm):
             'user': forms.HiddenInput(),
         }
 
+    def __init__(self, *args, **kwargs):
+        super(CompFormUser, self).__init__(*args, **kwargs)
+        self.fields['user'].required = False
+        self.fields['fio'].required = False
+
 
 class SeminarFormOrg(forms.ModelForm):
     fio = forms.CharField(label='ФИО спортсмена', widget=forms.TextInput(attrs={'class':'form-input mb-6'}))
@@ -105,6 +121,10 @@ class SeminarFormOrg(forms.ModelForm):
         widgets = {
             'user': forms.HiddenInput(),
         }
+
+    def __init__(self, *args, **kwargs):
+        super(SeminarFormOrg, self).__init__(*args, **kwargs)
+        self.fields['user'].required = False
 
 
 class SeminarFormUser(forms.ModelForm):
@@ -121,6 +141,11 @@ class SeminarFormUser(forms.ModelForm):
             'fio': forms.HiddenInput(),
             'user': forms.HiddenInput(),
         }
+
+    def __init__(self, *args, **kwargs):
+        super(SeminarFormUser, self).__init__(*args, **kwargs)
+        self.fields['user'].required = False
+        self.fields['fio'].required = False
 
 
 class SeminarAdminForm(forms.ModelForm):

@@ -141,9 +141,11 @@ class CompUserView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         comp_form = form.save(commit=False)
         if not comp_form.anon:
-            comp_form.fio = self.request.user.last_name + self.request.user.mid_name + self.request.user.first_name
+            comp_form.fio = (self.request.user.last_name + ' ' + self.request.user.mid_name  + ' ' +
+                             self.request.user.first_name  + ' ')
         else:
             comp_form.fio = self.request.user.username
+        comp_form.user = self.request.user
         return  super().form_valid(form)
 
 
@@ -169,7 +171,8 @@ class SeminarUserView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         sem_form = form.save(commit=False)
         sem_form.user = self.request.user
-        sem_form.fio = self.request.user.last_name + self.request.user.mid_name + self.request.user.first_name
+        sem_form.fio = (self.request.user.last_name + ' ' + self.request.user.mid_name + ' ' +
+                        self.request.user.first_name + ' ')
         sem_form.save()
         return super().form_valid(form)
 
@@ -194,6 +197,9 @@ class AppCardDeleteView(LoginRequiredMixin, DeleteView):
     model = AppCard
     template_name = 'app_cards.html'
     success_url = reverse_lazy('app_cards')
+
+    def get_object(self, queryset=None):
+        return AppCard.objects.get(id=self.kwargs['pk'])
 
 
 class CompetitionsUpdateView(LoginRequiredMixin, CreateView):

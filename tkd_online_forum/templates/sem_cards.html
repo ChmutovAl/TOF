@@ -36,6 +36,9 @@
                                                         Статус оплаты
                                                     </th>
                                                     {% endif %}
+                                                    <th scope="col" class="px-6 py-3 text-start text-sm text-gray-500">
+                                                        Действие
+                                                    </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -56,20 +59,27 @@
                                                 {% if not request.user.admin %}
                                                     {% if object.status %}
                                                         <td
-                                                        class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                                          <button type="button" class="btn bg-success text-white" disabled>
                                                             <i class="ti ti-check text-base me-4"></i>
                                                          </button>
                                                         </td>
                                                     {% else %}
                                                      <td
-                                                        class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                                         <button type="button" class="btn bg-danger text-white" disabled>
                                                             <i class="ti ti-brand-x text-base me-4"></i>
                                                         </button>
                                                         </td>
                                                     {% endif %}
                                                     {% endif %}
+                                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
+                                                        <form action="{%url 'app_card_delete' pk=object.pk%}" method="POST">
+
+                                                            {% csrf_token %}
+                                                            <button class="text-primary hover:text-sky-700">Удалить</button>
+                                                        </form>
+                                                     </td>
                                                 </tr>
 
                                             {% endfor %}

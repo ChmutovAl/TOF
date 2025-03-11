@@ -21,6 +21,9 @@ class User(AbstractUser):
     org = models.BooleanField(default=False, verbose_name='Организация')
     admin = models.BooleanField(default=False, verbose_name='Админ')
 
+    def __str__(self):
+        return self.last_name + ' ' + self.first_name + ' ' + self.mid_name
+
 
     class Meta:
         verbose_name = 'Пользователь'
@@ -41,6 +44,9 @@ class Event(models.Model):
     cost = models.IntegerField(verbose_name='Цена')
     type = models.CharField(max_length=30, choices=event_type, default=event_type[0][0], verbose_name='Тип мероприятия')
 
+    def __str__(self):
+        return self.name
+
 
     class Meta:
         verbose_name = 'Мероприятие'
@@ -58,6 +64,9 @@ class AppCard(models.Model):
     anon = models.BooleanField(default=False, verbose_name='Анон')
     status = models.BooleanField(default=False, verbose_name='Статус оплаты')
     admin_comment = models.CharField(max_length=100, null=True, blank=True, verbose_name='Комментарий админа')
+
+    def __str__(self):
+        return self.fio + ' ' + self.event.name
 
 
     class Meta:
