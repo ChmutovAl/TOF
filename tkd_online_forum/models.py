@@ -80,6 +80,12 @@ class News(models.Model):
                                     verbose_name='Тег')
     about = models.CharField(max_length=500, verbose_name='Описание')
     banner = models.FileField(upload_to='news/', null=True, blank=True, verbose_name='Баннер')
+    date_begin = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True, verbose_name='Дата начала')
+    date_end = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True, verbose_name='Дата окончания')
+    time_begin = models.TimeField(auto_now=False, auto_now_add=False, null=True, blank=True, verbose_name='Время начала')
+    time_end = models.TimeField(auto_now=False, auto_now_add=False, null=True, blank=True, verbose_name='Время начала')
+    active = models.BooleanField(default=False, verbose_name='Активно')
+    cost = models.IntegerField(null=True, blank=True,verbose_name='Цена')
 
     def __str__(self):
         return self.name

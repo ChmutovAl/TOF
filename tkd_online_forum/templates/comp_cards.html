@@ -2,12 +2,23 @@
 {%block content%}
     {% if not request.user.admin %}
                         <div class="p-5 ">
+                        {% if request.user.org %}
                             <div class="flex flex-wrap items-center gap-3">
+
+                        <a type="button"
+                                        class="btn bg-success/25 text-success hover:bg-success hover:text-white"
+                        href="{%url 'competitions_org_create'%}">
+                            Заявка на соревнование</a>
+                            </div>
+                            {% else %}
+                        <div class="flex flex-wrap items-center gap-3">
+
                         <a type="button"
                                         class="btn bg-success/25 text-success hover:bg-success hover:text-white"
                         href="{%url 'competitions_user_create'%}">
                             Заявка на соревнование</a>
                             </div>
+                            {% endif %}
                         </div>
     {% endif %}
 				    <div class="card overflow-hidden">

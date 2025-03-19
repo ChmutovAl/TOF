@@ -1,0 +1,43 @@
+{%extends 'base.html'%}
+{%block content%}
+                            <div class="p-5 border-t border-dashed border-default-200">
+                                <div class="hs-accordion-group">
+                                    <div class="hs-accordion active" id="basic-no-arrow-heading-one">
+                                        <button
+                                            class="hs-accordion-toggle hs-accordion-active:text-primary group py-3 inline-flex items-center gap-x-3 w-full font-semibold text-left text-default-800 transition hover:text-default-500"
+                                            aria-controls="hs-basic-no-arrow-collapse-one">
+                                            Соревнования
+                                        </button>
+                                        <div id="basic-no-arrow-collapse-one"
+                                            class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300"
+                                            aria-labelledby="#basic-no-arrow-heading-one">
+                                            <p class="text-default-800">
+                                                <em>This is the third item's accordion body.</em> It is hidden by
+                                                default, until the collapse plugin adds the appropriate classes that we
+                                                use to style each element. These classes control the overall appearance,
+                                                as well as the showing and hiding via CSS transitions.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="hs-accordion" id="basic-no-arrow-heading-two">
+                                        <button
+                                            class="hs-accordion-toggle hs-accordion-active:text-primary group py-3 inline-flex items-center gap-x-3 w-full font-semibold text-left text-default-800 transition hover:text-default-500"
+                                            aria-controls="hs-basic-no-arrow-collapse-two">
+                                            Семинары
+                                        </button>
+                                        <div id="basic-no-arrow-collapse-two"
+                                            class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
+                                            aria-labelledby="#basic-no-arrow-heading-two">
+                                            <p class="text-default-800">
+                                                <em>This is the third item's accordion body.</em> It is hidden by
+                                                default, until the collapse plugin adds the appropriate classes that we
+                                                use to style each element. These classes control the overall appearance,
+                                                as well as the showing and hiding via CSS transitions.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+{% endblock %}

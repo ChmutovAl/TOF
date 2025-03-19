@@ -242,3 +242,4 @@ class SeminarUserUpdateView(LoginRequiredMixin, CreateView):
     form_class = SeminarFormUser
     template_name = 'form.html'
     success_url = reverse_lazy('sem_cards')
+
