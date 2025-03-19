@@ -209,13 +209,11 @@ class CompetitionsUpdateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('competitions')
 
 
-
 class SeminarsUpdateView(LoginRequiredMixin, CreateView):
     model = Event
     form_class = SeminarForm
     template_name = 'form.html'
     success_url = reverse_lazy('seminars')
-
 
 
 class CompOrgUpdateView(LoginRequiredMixin, CreateView):
@@ -225,7 +223,6 @@ class CompOrgUpdateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('comp_cards')
 
 
-
 class CompUserUpdateView(LoginRequiredMixin, CreateView):
     model = AppCard
     form_class = CompFormUser
@@ -233,13 +230,11 @@ class CompUserUpdateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('comp_cards')
 
 
-
 class SeminarOrgUpdateView(LoginRequiredMixin, CreateView):
     model = AppCard
     form_class = SeminarFormOrg
     template_name = 'form.html'
     success_url = reverse_lazy('sem_cards')
-
 
 
 class SeminarUserUpdateView(LoginRequiredMixin, CreateView):

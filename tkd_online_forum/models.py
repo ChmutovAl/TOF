@@ -74,6 +74,29 @@ class AppCard(models.Model):
         verbose_name_plural = 'Заявки'
 
 
+class News(models.Model):
+    name = models.CharField(max_length=20, verbose_name='Название')
+    tag = models.ForeignKey('Tag', on_delete=models.PROTECT, null=False, blank=False,
+                                    verbose_name='Тег')
+    about = models.CharField(max_length=500, verbose_name='Описание')
+    banner = models.FileField(upload_to='news/', null=True, blank=True, verbose_name='Баннер')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Новость'
+        verbose_name_plural = 'Новости'
+
+
+class Tag(models.Model):
+    name = models.CharField(max_length=20, null=False, blank=False, verbose_name='Название')
+
+    class Meta:
+        verbose_name = 'Новостной тег'
+        verbose_name_plural = 'Новостные теги'
+
+
 class Federation(models.Model):
     name = models.CharField(max_length=20, null=False, blank=False, verbose_name='Название')
 
