@@ -165,6 +165,12 @@ class CompAdminForm(forms.ModelForm):
         fields = ['score', 'admin_comment']
 
 
+class NewsForm(forms.ModelForm):
+    class Meta:
+        model = News
+        fields = '__all__'
+
+
 class ChangePassword(PasswordChangeForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

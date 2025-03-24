@@ -1,0 +1,24 @@
+{%extends 'base.html'%}
+{%block content%}
+        {% for object in object_list %}
+                        <a class="card group overflow-hidden hover:shadow-lg transition" href="{%url 'news_detail' object.id%}">
+                            <div class="relative pt-[50%] sm:pt-[60%] lg:pt-[80%] rounded-t-xl overflow-hidden">
+                                <img class="size-full absolute top-0 start-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-t-xl"
+                                     {% if object.banner  %}
+                                    src={{ object.banner }}
+                                     {% else %}
+                                     src="assets/images/small/img-4.jpg"
+                                {% endif %}
+                            >
+                            </div>
+                            <div class="p-4 md:p-5">
+                                <h3 class="text-lg font-bold text-gray-800">
+                                    {{ object.name}}
+                                </h3>
+                                <p class="mt-1 text-gray-500">
+                                    {{ object.about }}
+                                </p>
+                            </div>
+                        </a>
+        {% endfor %}
+{% endblock %}

@@ -243,3 +243,25 @@ class SeminarUserUpdateView(LoginRequiredMixin, CreateView):
     template_name = 'form.html'
     success_url = reverse_lazy('sem_cards')
 
+
+class NewsListView(LoginRequiredMixin, ListView):
+    model = News
+    template_name = 'news.html'
+
+    def get_queryset(self):
+        if self.request.user.admin:
+            return News.objects.all()
+        return News.objects.filter(active=True)
+
+
+class NewsDetailView(LoginRequiredMixin, DetailView):
+    model = News
+    template_name = "new.html"
+
+
+class NewsCreateView(LoginRequiredMixin, CreateView):
+    model = News
+    form_class = NewsForm
+    template_name = "form.html"
+    success_url = reverse_lazy('news')
+

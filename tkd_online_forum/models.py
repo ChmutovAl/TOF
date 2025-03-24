@@ -43,6 +43,7 @@ class Event(models.Model):
     active = models.BooleanField(default=False, verbose_name='Активно')
     cost = models.IntegerField(verbose_name='Цена')
     type = models.CharField(max_length=30, choices=event_type, default=event_type[0][0], verbose_name='Тип мероприятия')
+    banner = models.FileField(upload_to='event_banners/', null=True, blank=True, verbose_name='Баннер')
 
     def __str__(self):
         return self.name

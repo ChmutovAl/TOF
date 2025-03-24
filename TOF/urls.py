@@ -50,5 +50,8 @@ urlpatterns = [
     path('app_cards/seminars/user/update/<int:pk>', SeminarUserUpdateView.as_view(), name='seminars_user_update'),
     path('events/delete/<int:pk>', EventDeleteView.as_view(), name='event_delete'),
     path('app_cards/delete/<int:pk>', AppCardDeleteView.as_view(), name='app_card_delete'),
+    path('news/', NewsListView.as_view(), name='news'),
+    path('news/<int:pk>', NewsDetailView.as_view(), name='news_detail'),
+
 
 ]
