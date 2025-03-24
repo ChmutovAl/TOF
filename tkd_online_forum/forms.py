@@ -167,7 +167,7 @@ class CompAdminForm(forms.ModelForm):
 
 class NewsForm(forms.ModelForm):
     name = forms.CharField(label='Заголовок', widget=forms.TextInput(attrs={'class':'form-input mb-6'}))
-    tag = forms.ModelChoiceField(label = 'Рубрика', widget=forms.Select(attrs={'class':'form-select mb-6'}))
+    tag = forms.ModelChoiceField(queryset= Tag.objects.all(), label = 'Рубрика', widget=forms.Select(attrs={'class':'form-select mb-6'}))
     about = forms.CharField(required=True, label='Информация', widget=forms.Textarea(attrs={'class':'form-input mb-6'}))
     date_begin = forms.DateField(label='Начало приема заявок', widget=forms.DateInput(attrs={'class':'form-input mb-6', 'type':'date'}))
     date_end = forms.DateField(label='Дата проведения', widget=forms.DateInput(attrs={'class':'form-input mb-6', 'type':'date'}))
