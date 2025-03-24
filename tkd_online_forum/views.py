@@ -265,3 +265,10 @@ class NewsCreateView(LoginRequiredMixin, CreateView):
     template_name = "form.html"
     success_url = reverse_lazy('news')
 
+
+class NewsUpdateView(LoginRequiredMixin, UpdateView):
+    model = News
+    form_class = NewsForm
+    template_name = 'form.html'
+    success_url = reverse_lazy('news')
+

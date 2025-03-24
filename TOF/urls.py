@@ -52,6 +52,7 @@ urlpatterns = [
     path('app_cards/delete/<int:pk>', AppCardDeleteView.as_view(), name='app_card_delete'),
     path('news/', NewsListView.as_view(), name='news'),
     path('news/<int:pk>', NewsDetailView.as_view(), name='news_detail'),
-
+    path('news/create', NewsCreateView.as_view(), name='news_create'),
+    path('news/update/<int:pk>', NewsUpdateView.as_view(), name='news_update'),
 
 ]
