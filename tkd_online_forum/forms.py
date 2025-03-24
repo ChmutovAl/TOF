@@ -166,6 +166,20 @@ class CompAdminForm(forms.ModelForm):
 
 
 class NewsForm(forms.ModelForm):
+    name = forms.CharField(label='Заголовок', widget=forms.TextInput(attrs={'class':'form-input mb-6'}))
+    tag = forms.ModelChoiceField(label = 'Рубрика', widget=forms.Select(attrs={'class':'form-select mb-6'}))
+    about = forms.CharField(required=True, label='Информация', widget=forms.Textarea(attrs={'class':'form-input mb-6'}))
+    date_begin = forms.DateField(label='Начало приема заявок', widget=forms.DateInput(attrs={'class':'form-input mb-6', 'type':'date'}))
+    date_end = forms.DateField(label='Дата проведения', widget=forms.DateInput(attrs={'class':'form-input mb-6', 'type':'date'}))
+    time_begin = forms.TimeField(label='Время начала', widget=forms.TimeInput(attrs={'class':'form-input mb-6', 'type':'time'}))
+    time_end = forms.TimeField(label='Время окончания', widget=forms.TimeInput(attrs={'class':'form-input mb-6', 'type':'time'}))
+    active = forms.BooleanField(label='Активно', required=False,
+                                widget=forms.CheckboxInput(attrs={'class':'form-switch text-primary'}))
+    cost = forms.IntegerField(label='Стоимость', widget=forms.NumberInput(attrs={'class':'form-input mb-6'}))
+    banner = forms.FileField(label='Баннер', widget=forms.FileInput(attrs={'class':'form-input mb-6'}))
+
+
+
     class Meta:
         model = News
         fields = '__all__'
