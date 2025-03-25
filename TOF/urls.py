@@ -54,5 +54,6 @@ urlpatterns = [
     path('news/<int:pk>', NewsDetailView.as_view(), name='news_detail'),
     path('news/create', NewsCreateView.as_view(), name='news_create'),
     path('news/update/<int:pk>', NewsUpdateView.as_view(), name='news_update'),
+    path('news/delete/<int:pk>', NewsDeleteView.as_view(), name='news_delete')
 
 ]

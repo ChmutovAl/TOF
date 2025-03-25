@@ -272,3 +272,12 @@ class NewsUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'form.html'
     success_url = reverse_lazy('news')
 
+
+class NewsDeleteView(LoginRequiredMixin, DeleteView):
+    model = News
+    template_name = 'news.html'
+    success_url = reverse_lazy('news')
+
+    def get_object(self, queryset=None):
+        return News.objects.get(id=self.kwargs['pk'])
+
