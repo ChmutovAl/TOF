@@ -1,5 +1,14 @@
 {%extends 'base.html'%}
 {%block content%}
+    {% if request.user.admin %}
+                                <div class="flex flex-wrap items-center gap-3">
+
+                        <a type="button"
+                                        class="btn bg-success/25 text-success hover:bg-success hover:text-white"
+                        href="{%url 'news_create'%}">
+                            Добавить новость</a>
+                            </div>
+    {% endif %}
         {% for object in object_list %}
                         <a class="card group overflow-hidden hover:shadow-lg transition" href="{%url 'news_detail' object.id%}">
                             <div class="relative pt-[50%] sm:pt-[60%] lg:pt-[80%] rounded-t-xl overflow-hidden">
