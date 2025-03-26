@@ -179,10 +179,13 @@ class NewsForm(forms.ModelForm):
     banner = forms.FileField(label='Баннер', widget=forms.FileInput(attrs={'class':'form-input mb-6'}))
 
 
-
     class Meta:
         model = News
         fields = '__all__'
+
+
+class SeminarAdminComment(forms.Form):
+    comment = forms.CharField(widget=forms.TextInput(attrs={'class':'form-input mb-6'}))
 
 
 class ChangePassword(PasswordChangeForm):
