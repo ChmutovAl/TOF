@@ -25,12 +25,13 @@
                             <div class="flex flex-wrap items-center gap-3">
                         <a type="button"
                                         class="btn bg-success/25 text-success hover:bg-success hover:text-white"
-                        href="{%url 'competitions_create'%}">
-                            Добавить соревнование</a>
-                        <a type="button"
-                                        class="btn bg-info/25 text-info hover:bg-info hover:text-white"
-                        href="{%url 'seminars_create'%}">
-                            Добавить семинар</a>
+                        href="{%url 'news_update' pk=object.pk%}">
+                            Изменить</a>
+                                                        <form action="{%url 'news_delete' pk=object.pk%}" method="POST">
+
+                                                            {% csrf_token %}
+                                                            <button class="text-primary hover:text-sky-700">Удалить</button>
+                                                        </form>
                             </div>
                         </div>
             {% endif %}
