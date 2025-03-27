@@ -54,6 +54,9 @@ urlpatterns = [
     path('news/<int:pk>', NewsDetailView.as_view(), name='news_detail'),
     path('news/create', NewsCreateView.as_view(), name='news_create'),
     path('news/update/<int:pk>', NewsUpdateView.as_view(), name='news_update'),
-    path('news/delete/<int:pk>', NewsDeleteView.as_view(), name='news_delete')
+    path('news/delete/<int:pk>', NewsDeleteView.as_view(), name='news_delete'),
+    path('seminars/add_link/<int:pk>', seminar_link, name='seminar_link'),
 
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

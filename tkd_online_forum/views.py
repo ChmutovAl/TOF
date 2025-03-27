@@ -7,7 +7,7 @@ from django.forms import formset_factory, modelformset_factory
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.hashers import check_password
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.decorators import login_required
@@ -281,3 +281,10 @@ class NewsDeleteView(LoginRequiredMixin, DeleteView):
     def get_object(self, queryset=None):
         return News.objects.get(id=self.kwargs['pk'])
 
+def seminar_link(request, pk):
+    if request.method == 'POST':
+        form = SeminarLink(request.POST)
+        if form.is_valid():
+            AppCard.objects.filter(event_id=pk).update(admin_comment=form.cleaned_data['comment'])
+            return HttpResponseRedirect(reverse('seminars'))
+    return render(request, 'form.html', {'form': form})

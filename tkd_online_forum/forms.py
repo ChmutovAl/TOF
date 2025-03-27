@@ -184,7 +184,7 @@ class NewsForm(forms.ModelForm):
         fields = '__all__'
 
 
-class SeminarAdminComment(forms.Form):
+class SeminarLink(forms.Form):
     comment = forms.CharField(widget=forms.TextInput(attrs={'class':'form-input mb-6'}))
 
 

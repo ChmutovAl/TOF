@@ -32,9 +32,20 @@ class QualificationAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
 
+class NewsAdmin(admin.ModelAdmin):
+    list_display = ['name']
+    search_fields = ['name']
+
+
+class TagAdmin(admin.ModelAdmin):
+    list_display = ['name']
+    search_fields = ['name']
+
 admin.site.register(User, UserAdmin)
 admin.site.register(Event, EventAdmin)
 admin.site.register(AppCard, AppCardAdmin)
 admin.site.register(Federation, FederationAdmin)
 admin.site.register(Belt, BeltAdmin)
 admin.site.register(Qualification, QualificationAdmin)
+admin.site.register(News, NewsAdmin)
+admin.site.register(Tag, TagAdmin)
