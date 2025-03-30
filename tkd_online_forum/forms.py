@@ -148,14 +148,6 @@ class SeminarFormUser(forms.ModelForm):
         self.fields['fio'].required = False
 
 
-class SeminarAdminForm(forms.ModelForm):
-    admin_comment = forms.CharField(label='Комментарий', widget=forms.TextInput(attrs={'class':'form-input mb-6'}))
-
-    class Meta:
-        model = AppCard
-        fields = ['admin_comment']
-
-
 class CompAdminForm(forms.ModelForm):
     score = forms.IntegerField(label='Баллы', widget=forms.NumberInput(attrs={'class':'form-input mb-6'}))
     admin_comment = forms.CharField(label='Комментарий', widget=forms.TextInput(attrs={'class':'form-input mb-6'}))

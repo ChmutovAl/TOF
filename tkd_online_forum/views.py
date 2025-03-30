@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-
+from lib2to3.fixes.fix_input import context
 
 from django.db.models import Count
 from django.contrib.auth import update_session_auth_hash
@@ -288,3 +288,12 @@ def seminar_link(request, pk):
             AppCard.objects.filter(event_id=pk).update(admin_comment=form.cleaned_data['comment'])
             return HttpResponseRedirect(reverse('seminars'))
     return render(request, 'form.html', {'form': form})
+
+
+def comp_value(request):
+    context={}
+
+    comp_formset = formset_factory(CompAdminForm)
+    formset = comp_formset(request.POST or None, request.FILES or None)
+    context['formset'] = formset
+    return render(request, "comp_cards_admin.html", context)
