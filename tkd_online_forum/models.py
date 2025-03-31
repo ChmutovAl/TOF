@@ -1,5 +1,5 @@
 from tabnanny import verbose
-
+from django.core.validators import FileExtensionValidator
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -57,7 +57,8 @@ class Event(models.Model):
 class AppCard(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name='Пользователь')
     fio = models.CharField(max_length=100, null=False, blank=False, verbose_name='ФИО')
-    file = models.FileField(upload_to='cards/', null=True, blank=True, verbose_name='Видео')
+    file = models.FileField(upload_to='cards/', validators=[FileExtensionValidator(allowed_extensions=['mp4'])],
+                            null=True, blank=True, verbose_name='Видео')
     comment = models.CharField(max_length=100, null=True, blank=True,verbose_name='Комментарий')
     event = models.ForeignKey(Event, on_delete=models.PROTECT, null=False, blank=False,
                                     verbose_name='Мероприятие')
