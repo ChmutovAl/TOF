@@ -97,13 +97,24 @@
                                         Все заявки
                                     </a>
                                 </li>
+                                {% if request.user.admin %}
                                 <li class="menu-item">
+                                    
+                                    <a class="flex items-center gap-x-3.5 rounded-e-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100"
+                                        href="{%url 'comp_value'%}">
+                                        <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                                        Соревнования
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="menu-item">
+                                    
                                     <a class="flex items-center gap-x-3.5 rounded-e-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100"
                                         href="{%url 'comp_cards'%}">
                                         <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
                                         Соревнования
                                     </a>
-                                </li>
+                                </li>    
                                 <li class="menu-item">
                                     <a class="flex items-center gap-x-3.5 rounded-e-full px-5 py-2 text-sm font-medium text-default-700 hover:bg-default-100"
                                         href="{%url 'sem_cards'%}">
@@ -111,7 +122,7 @@
                                         Семинары
                                     </a>
                                 </li>
-                       
+                                {% endif %}
                             </ul>
                         </div>
                     </li>
