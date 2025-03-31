@@ -293,7 +293,7 @@ def seminar_link(request, pk):
 def comp_value(request):
     context={}
     list = AppCard.objects.filter(event__type='Соревнования', status=True)
-    comp_formset = formset_factory(CompAdminForm)
+    comp_formset = modelformset_factory(model=AppCard, form=CompAdminForm)
     formset = comp_formset(request.POST or None, request.FILES or None, initial=list)
     context['formset'] = formset
     return render(request, "comp_cards_admin.html", context)
