@@ -2,15 +2,29 @@
 {%block content%}
 <form method="post" enctype="multipart/form-data">
                 {%csrf_token%}
+{{ formset.management_form }}
     {% for form in formset %}
+        {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+    {% endfor %}
  <div class="card">
     <div class="p-6">
         <div class="grid lg:grid-cols-1 gap-6">
+            <p>{{ form.instance.fio }}</p>
                 <div class="aspect-w-16 aspect-h-9">
-                                <iframe src={{ form.instance.file.url }} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        <video controls>
+                        <source src= {{ form.instance.file.url }} type="video/mp4">
+
+                    </video>
+
+
                 </div>
+                <label>Оценка</label>
                 {{ form.score }}
+                {{ form.score.errors }}
+                <label>Комментарий</label>
                 {{ form.admin_comment }}
+                {{ form.admin_comment.errors }}
 
         </div>
     </div>
