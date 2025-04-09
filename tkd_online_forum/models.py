@@ -44,14 +44,14 @@ class Event(models.Model):
     type = models.CharField(max_length=30, choices=event_type, default=event_type[0][0], verbose_name='Тип мероприятия')
     banner = models.FileField(upload_to='event_banners/', null=True, blank=True, verbose_name='Баннер')
 
-    def save(self, *args, **kwargs):
-        if self.active and self.type == 'Соревнование':
-            Event.objects.filter(~models.Q(id=self.id)).update(active=False)
-
-        elif not self.active and self.type == 'Соревнование':
-            for card in AppCard.objects.filter(event=self.id):
-                card.file.delete()
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if self.active and self.type == 'Соревнование':
+    #         Event.objects.filter(~models.Q(id=self.id)).update(active=False)
+    #
+    #     elif not self.active and self.type == 'Соревнование':
+    #         for card in AppCard.objects.filter(event=self.id):
+    #             card.file.delete()
+    #     super().save(*args, **kwargs)
 
 
     def __str__(self):
