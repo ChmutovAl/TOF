@@ -306,7 +306,7 @@ def comp_value(request):
         else:
             print(formset.errors)
     else:
-        formset = comp_formset(queryset=AppCard.objects.all())
+        formset = comp_formset(queryset=list)
     context['formset'] = formset
     print(formset.is_valid())
     return render(request, "comp_cards_admin.html", context)
