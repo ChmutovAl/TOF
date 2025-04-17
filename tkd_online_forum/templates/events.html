@@ -72,16 +72,27 @@
                                             class="hs-dropdown-menu hs-dropdown-open:opacity-100 min-w-[180px] transition-[opacity,margin] mt-4 opacity-0 z-10 bg-white dark:bg-default-50 shadow-lg rounded-lg border border-default-100 p-1.5 hidden">
                                             <ul class="flex flex-col gap-1">
                                                 <li>
+                                                    {% if object.type == 'Семинар' %}
                                                     <a class="flex items-center font-normal text-default-600 py-2 px-3 transition-all hover:text-default-700 hover:bg-default-400/10 rounded"
-                                                        href="#">Изменить</a>
+                                                        href={% url 'seminars_update' object.pk %}>Изменить</a>
+                                                    {% else %}
+                                                    <a class="flex items-center font-normal text-default-600 py-2 px-3 transition-all hover:text-default-700 hover:bg-default-400/10 rounded"
+                                                        href={% url 'competitions_update' object.pk %}>Изменить</a>
+                                                    {% endif %}
                                                 </li>
                                                 <li>
                                                     <a class="flex items-center font-normal text-default-600 py-2 px-3 transition-all hover:text-default-700 hover:bg-default-400/10 rounded"
-                                                        href="#">Удалить</a>
+                                                        href={% url 'event_delete' object.pk%}>Удалить</a>
                                                 </li>
                                                 <li>
                                                     <a class="flex items-center font-normal text-default-600 py-2 px-3 transition-all hover:text-default-700 hover:bg-default-400/10 rounded"
-                                                        href="#">Завершить</a>
+                                                        href={% url 'event_change_active' object.pk%}>
+                                                        {% if object.active %}
+                                                        Завершить
+                                                        {% else %}
+                                                        Запустить
+                                                        {% endif %}
+                                                    </a>
                                                 </li>
                                             </ul>
                                         </div>
