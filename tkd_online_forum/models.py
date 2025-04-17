@@ -35,7 +35,8 @@ class Event(models.Model):
     name = models.CharField(max_length=20, verbose_name='Название')
     date_begin = models.DateField(auto_now=False, auto_now_add=False, null=False, blank=False, verbose_name='Дата начала')
     date_end = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True, verbose_name='Дата окончания')
-    file = models.FileField(upload_to='competitions/', null=True, blank=True, verbose_name='Протокол')
+    file = models.FileField(upload_to='competitions/', null=True, blank=True,
+                            validators=[FileExtensionValidator(['pdf'])], verbose_name='Протокол')
     time_begin = models.TimeField(auto_now=False, auto_now_add=False, null=True, blank=True, verbose_name='Время начала')
     time_end = models.TimeField(auto_now=False, auto_now_add=False, null=True, blank=True, verbose_name='Время начала')
     comment = models.CharField(max_length=250, verbose_name='Описание')
