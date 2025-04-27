@@ -53,7 +53,6 @@ class Event(models.Model):
                 card.file.delete()
         super().save(*args, **kwargs)
 
-
     def __str__(self):
         return self.name
 
