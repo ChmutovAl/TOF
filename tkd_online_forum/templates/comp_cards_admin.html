@@ -1,13 +1,14 @@
 {%extends 'base.html'%}
 {%block content%}
-<form method="post" enctype="multipart/form-data">
+<form class="p-6" method="post" enctype="multipart/form-data">
                 {%csrf_token%}
 {{ formset.management_form }}
     {% for form in formset %}
         {% for hidden in form.hidden_fields %}
         {{ hidden }}
     {% endfor %}
- <div class="card">
+ <div class="grid grid-cols-1 gap-6">
+ <div class="card p-6">
     <div class="p-6">
         <div class="grid lg:grid-cols-1 gap-6">
             <p>{{ form.instance.fio }}</p>
@@ -33,6 +34,7 @@
     {% endfor %}
     <div class="flex justify-center m-2">
 		<button type="submit" class="btn w-full text-white bg-primary"> Сохранить </button>
+    </div>
     </div>
 </form>
 {% endblock %}

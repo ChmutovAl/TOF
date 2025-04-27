@@ -35,7 +35,8 @@ class Event(models.Model):
     name = models.CharField(max_length=20, verbose_name='Название')
     date_begin = models.DateField(auto_now=False, auto_now_add=False, null=False, blank=False, verbose_name='Дата начала')
     date_end = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True, verbose_name='Дата окончания')
-    file = models.FileField(upload_to='competitions/', null=True, blank=True, verbose_name='Протокол')
+    file = models.FileField(upload_to='competitions/', null=True, blank=True,
+                            validators=[FileExtensionValidator(['pdf'])], verbose_name='Протокол')
     time_begin = models.TimeField(auto_now=False, auto_now_add=False, null=True, blank=True, verbose_name='Время начала')
     time_end = models.TimeField(auto_now=False, auto_now_add=False, null=True, blank=True, verbose_name='Время начала')
     comment = models.CharField(max_length=250, verbose_name='Описание')
@@ -44,14 +45,14 @@ class Event(models.Model):
     type = models.CharField(max_length=30, choices=event_type, default=event_type[0][0], verbose_name='Тип мероприятия')
     banner = models.FileField(upload_to='event_banners/', null=True, blank=True, verbose_name='Баннер')
 
-    def save(self, *args, **kwargs):
-        if self.active and self.type == 'Соревнование':
-            Event.objects.filter(~models.Q(id=self.id)).update(active=False)
-
-        elif not self.active and self.type == 'Соревнование':
-            for card in AppCard.objects.filter(event=self.id):
-                card.file.delete()
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if self.active and self.type == 'Соревнование':
+    #         Event.objects.filter(~models.Q(id=self.id)).update(active=False)
+    #
+    #     elif not self.active and self.type == 'Соревнование':
+    #         for card in AppCard.objects.filter(event=self.id):
+    #             card.file.delete()
+    #     super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name

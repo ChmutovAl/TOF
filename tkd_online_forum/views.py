@@ -202,42 +202,42 @@ class AppCardDeleteView(LoginRequiredMixin, DeleteView):
         return AppCard.objects.get(id=self.kwargs['pk'])
 
 
-class CompetitionsUpdateView(LoginRequiredMixin, CreateView):
+class CompetitionsUpdateView(LoginRequiredMixin, UpdateView):
     model = Event
     form_class = CompetitionForm
     template_name = 'form.html'
     success_url = reverse_lazy('competitions')
 
 
-class SeminarsUpdateView(LoginRequiredMixin, CreateView):
+class SeminarsUpdateView(LoginRequiredMixin, UpdateView):
     model = Event
     form_class = SeminarForm
     template_name = 'form.html'
     success_url = reverse_lazy('seminars')
 
 
-class CompOrgUpdateView(LoginRequiredMixin, CreateView):
+class CompOrgUpdateView(LoginRequiredMixin, UpdateView):
     model = AppCard
     form_class = CompFormOrg
     template_name = 'form.html'
     success_url = reverse_lazy('comp_cards')
 
 
-class CompUserUpdateView(LoginRequiredMixin, CreateView):
+class CompUserUpdateView(LoginRequiredMixin, UpdateView):
     model = AppCard
     form_class = CompFormUser
     template_name = 'form.html'
     success_url = reverse_lazy('comp_cards')
 
 
-class SeminarOrgUpdateView(LoginRequiredMixin, CreateView):
+class SeminarOrgUpdateView(LoginRequiredMixin, UpdateView):
     model = AppCard
     form_class = SeminarFormOrg
     template_name = 'form.html'
     success_url = reverse_lazy('sem_cards')
 
 
-class SeminarUserUpdateView(LoginRequiredMixin, CreateView):
+class SeminarUserUpdateView(LoginRequiredMixin, UpdateView):
     model = AppCard
     form_class = SeminarFormUser
     template_name = 'form.html'
@@ -292,7 +292,7 @@ def seminar_link(request, pk):
 
 def comp_value(request):
     context={}
-    list = AppCard.objects.filter(event__type='Соревнования', status=True)
+    list = AppCard.objects.filter(event__type='Соревнования', status=True)[:10]
     comp_formset = modelformset_factory(model=AppCard, form=CompAdminForm, extra=0)
     if request.method == 'POST':
         formset = comp_formset(request.POST or None, request.FILES or None, initial=list)
@@ -306,7 +306,17 @@ def comp_value(request):
         else:
             print(formset.errors)
     else:
-        formset = comp_formset(queryset=AppCard.objects.all())
+        formset = comp_formset(queryset=list)
     context['formset'] = formset
     print(formset.is_valid())
     return render(request, "comp_cards_admin.html", context)
+
+
+def event_change_active(request, pk):
+    event = Event.objects.get(id=pk)
+    if event.active:
+        event.active = False
+    else:
+        event.active = True
+    event.save()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
